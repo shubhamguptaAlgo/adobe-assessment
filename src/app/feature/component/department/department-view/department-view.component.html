@@ -1,0 +1,120 @@
+<div class="card mx-auto"  id="customCard">
+    <div class="card-header text-center"  style="font-size: 30px; font-weight:bold">
+     Department List
+    </div>
+    <div class="p-3">
+        <button type="button" class="btn btn-success" (click)="sortByName()">Sort by Department Name</button>
+        <button type="button" class="btn btn-success mx-2" [routerLink]="['/hospital']">Back</button>
+
+    </div>
+    <form [formGroup]="departmentForm" >
+    <table class="table" style = "font-size:20px;" >
+      <thead>
+        <tr>
+          <th scope="col">Department Name</th>
+          <th scope="col">Head of Department</th>
+          <th scope="col">Conatact Number</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngIf="(departments$ | async)?.length==0" style="color: red; font-size:18px">*No records found.</div>
+        <tr *ngFor="let department of (departments$ | async) ; let i = index">
+          <td class="mx-3">{{department?.departmentname}}</td>
+          <td>{{department?.head}}</td>
+          <td>{{department?.contactnumber}}</td>
+
+          <td>
+             <button  class=" btn btn-primary"  (click)="openModal('form', department, 'edit')">Edit</button> 
+             <button  class="btn btn-danger mx-2" (click)="openModal('deleteModal', department, 'delete')">Delete</button> 
+          </td>
+        </tr>
+       
+        <tr>
+          <td>
+            <input type="text" size="12" class="py-2" formControlName="departmentname" >
+            <app-validator [control]="f.departmentname"></app-validator>
+          </td>
+          <td>
+            <input type="text" size="12" class="py-2" formControlName="head">
+            <app-validator [control]="f.head"></app-validator>
+          </td>
+          <td>
+            <input type="text" size="12" class="py-2" formControlName="contactnumber" maxlength="10">
+            <app-validator [control]="f.contactnumber"></app-validator>
+          </td>
+          <td><button type="button" class=" btn btn-success w-75 btn-lg py-2"
+             (click)="onSubmit()">Create</button> </td>
+        </tr>
+      </tbody>
+    </table>
+    </form>
+  </div>
+
+
+   <!-- EDit  modal  -->
+<div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="departmentForm">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Fill your Department Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="departmentForm" (ngSubmit)="updateDepartment()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="dpt">Department Name</label>
+              <input type="text" class="form-control" id="dpt" aria-describedby="dptHelp"
+              formControlName="departmentname" placeholder="Enter department" >
+            <app-validator [control]="f.departmentname"></app-validator>
+
+              <small id="dptHelp" class="form-text text-muted">Your information is safe with us.</small>
+            </div>
+            <div class="form-group">
+              <label for="head">Head</label>
+              <input type="text" class="form-control" id="head" aria-describedby="dptHead"
+              formControlName="head" placeholder="Enter Head" >
+            <app-validator [control]="f.head"></app-validator>
+
+            </div>
+            <div class="form-group">
+              <label for="mobile">Contact Number</label>
+              <input type="text" class="form-control" id="mobile"
+              formControlName="contactnumber" placeholder="Enter Contact no" maxlength="10">
+            <app-validator [control]="f.contactnumber"></app-validator>
+
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </form> 
+  </div>
+
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="deleteDepartment()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
