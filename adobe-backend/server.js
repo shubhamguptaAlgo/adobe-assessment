@@ -1,7 +1,7 @@
 
 const expressConfig = require('./config/expressConfig')
 const express = require('express');
-const PORT = 8081;
+const PORT = 8001;
 
 require('dotenv').config()
 
