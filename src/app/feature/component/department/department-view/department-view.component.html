@@ -43,7 +43,7 @@
             <input type="text" size="12" class="py-2" formControlName="contactnumber" maxlength="10">
             <app-validator [control]="f.contactnumber"></app-validator>
           </td>
-          <td><button type="button" class=" btn btn-success w-75 btn-lg py-2"
+          <td><button type="button" [disabled]="departmentForm.invalid"  class=" btn btn-success w-75 btn-lg py-2"
              (click)="onSubmit()">Create</button> </td>
         </tr>
       </tbody>
@@ -89,7 +89,7 @@
             </div>
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" [disabled]="departmentForm.invalid" class="btn btn-success">Submit</button>
           </div>
         </form>
       </div>

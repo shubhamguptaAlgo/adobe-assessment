@@ -34,7 +34,7 @@
             <input type="text" size="12" class="py-2" formControlName="contactnumber" maxlength="10" required>
             <app-validator [control]="f.contactnumber"></app-validator>
           </td>
-          <td><button  type="button" (click)="onSubmit()"class=" btn btn-success w-50 btn-lg py-2">Create</button> </td>
+          <td><button  type="button" [disabled]="hospitalForm.invalid" (click)="onSubmit()"class=" btn btn-success w-50 btn-lg py-2">Create</button> </td>
   
         </tr>
         
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" [disabled]="hospitalForm.invalid" class="btn btn-success">Submit</button>
           </div>
         </form>
       </div>
