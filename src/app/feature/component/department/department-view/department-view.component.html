@@ -32,11 +32,11 @@
        
         <tr>
           <td>
-            <input type="text" size="12" class="py-2" formControlName="departmentname" >
+            <input type="text" size="12" class="py-2" formControlName="departmentname" required>
             <app-validator [control]="f.departmentname"></app-validator>
           </td>
           <td>
-            <input type="text" size="12" class="py-2" formControlName="head">
+            <input type="text" size="12" class="py-2" formControlName="head" required>
             <app-validator [control]="f.head"></app-validator>
           </td>
           <td>
@@ -75,14 +75,14 @@
             </div>
             <div class="form-group">
               <label for="head">Head</label>
-              <input type="text" class="form-control" id="head" aria-describedby="dptHead"
+              <input type="text" class="form-control" id="head" aria-describedby="dptHead" required
               formControlName="head" placeholder="Enter Head" >
             <app-validator [control]="f.head"></app-validator>
 
             </div>
             <div class="form-group">
               <label for="mobile">Contact Number</label>
-              <input type="text" class="form-control" id="mobile"
+              <input type="text" class="form-control" id="mobile" required
               formControlName="contactnumber" placeholder="Enter Contact no" maxlength="10">
             <app-validator [control]="f.contactnumber"></app-validator>
 
