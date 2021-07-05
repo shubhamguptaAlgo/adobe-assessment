@@ -49,7 +49,7 @@ export class DepartmentViewComponent implements OnInit {
         head : ["", [Validators.required]],
         contactnumber : ["",[Validators.required, Validators.pattern(/^[6-9]\d{9}$/),
          Validators.maxLength(10), Validators.minLength(10)]],
-        hospitalname : [this.hospitalName,[Validators.required]],
+        hospitalname : [this.hospitalName.replace(/_/g," "),[Validators.required]],
       })
     }
 
@@ -63,7 +63,7 @@ export class DepartmentViewComponent implements OnInit {
      }
 
 
-    let url = environment.baseUrl + apiUrls.getDepartment
+    let url = environment.baseUrl + apiUrls.getDepartment;
     this.departments$ = this._hospitalService.get(url, params).pipe(
       map((res: any) => {
             return res.data;
@@ -110,7 +110,7 @@ export class DepartmentViewComponent implements OnInit {
   onSubmit(){
     let url = environment.baseUrl + apiUrls.createDepartment;
     let body = {
-      hospitalname : this.hospitalName,
+      // hospitalname : this.hospitalName,
      ...this.departmentForm.value
     }
     // console.log("Bosy is:", body)
