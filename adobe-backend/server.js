@@ -16,6 +16,6 @@ const app = express();
 const routes = require("./routes/index.js")(app);
 
  // start server
-app.listen(8001, () => {
+app.listen(PORT, () => {
     console.log(`Express server listening on port: ${PORT}`)
 });

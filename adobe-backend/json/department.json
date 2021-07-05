@@ -35,18 +35,6 @@
       "head": "Dr. A P Kulashekhar",
       "contactnumber": "9876543210",
       "hospitalname": "KIMS"
-    },
-    {
-      "departmentname": "Neuro Science1",
-      "head": "tead2",
-      "contactnumber": "9384938948",
-      "hospitalname": "Shankuntla Devi"
-    },
-    {
-      "departmentname": "Neuro Science3",
-      "head": "tead2",
-      "contactnumber": "9384938948",
-      "hospitalname": "Shankuntla Devi"
     }
   ]
 }
